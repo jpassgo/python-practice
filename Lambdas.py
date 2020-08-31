@@ -1,6 +1,3 @@
-def addition():
-    return lambda a, b: a + b
+from random import randint
 
-a = addition()
-print(a(1, 2))
-
+print(list(map(lambda num: num+1, [randint(1, 10000) for num in range(100)])))
