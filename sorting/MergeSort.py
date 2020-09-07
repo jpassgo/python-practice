@@ -20,7 +20,7 @@ def merge_sort(array1, array2):
 
     return sorted_array
 
-l1 = [1, 2, 3, 6, 8, 7, 9, 10]
+l1 = [1, 2, 3, 6, 7, 9, 10]
 l2 = [19, 999, 2323432]
 
 print(merge_sort(l1, l2))
