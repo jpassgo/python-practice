@@ -1,7 +1,15 @@
 def bisection_iter(n, arr):
     start = 0
     stop = len(arr) - 1
-    mid = (start + stop)//2
+    
+    while start <= stop:
+        mid = (start + stop)//2
+        if n == arr[mid]:
+            return f"{n} found and index {mid}"
+        elif n > arr[mid]:
+            start = mid + 1
+        else:
+            stop = mid - 1
     return f"{n} not found in list"
 
 def create_list(max_val):
@@ -13,5 +21,5 @@ def create_list(max_val):
 
 l = [1, 2, 3, 5, 34, 89, 233, 2444]
 
-num_to_search = 89
-print(bisection_iter(num_to_search, l))
+for num in l:
+    print(bisection_iter(num, l))
