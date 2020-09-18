@@ -16,7 +16,7 @@ class HashTable:
         found_key = False
 
         for index, record in enumerate(bucket):
-            record_key, record_index = record
+            record_key, record_value = record
             if record_key == key:
                 found_key = True
                 break
@@ -27,18 +27,53 @@ class HashTable:
         bucket.append((key, value))
 
     def get_value(self, key):
-        pass
+        hashed_key = hash(key)%self.size
+        bucket = self.hash_table[hashed_key]
+        found_key = False
+
+        for index, record in enumerate(bucket):
+            record_key, record_value = record
+            if record_key == key:
+                found_key = True
+                break
+        
+        if found_key:
+            return record_value
+        else:
+            return "No record found with that key value"
+
+    def delete_value(self, key):
+        hashed_key = hash(key)%self.size
+        bucket = self.hash_table[hashed_key]
+        found_key = False
+
+        for index, record in enumerate(bucket):
+            record_key, record_value = record
+            if record_key == key:
+                found_key = True
+                break
+        
+        if found_key:
+            while index < hash_table.size-1:
+                print()
+                self.hash_table[index] = self.hash_table[index+1]
+                index += 1
 
     # Loops through tuples in list and prints them all.
     def __str__(self):
         return "".join(str(item) for item in self.hash_table)
 
 hash_table = HashTable(10)
-print(hash_table)
+# print(hash_table)
 hash_table.set_value('john@example.com', "Guitarist/Vocalist")
 hash_table.set_value('paul@example.com', "Bassist/Vocalist")
 hash_table.set_value('ringo@example.com', "Drummer")
 hash_table.set_value('george@example.com', "Lead Guitarist")
-print(hash_table)
+# print(hash_table)
 hash_table.set_value('george@example.com', "Lead Guitarist/Vocalist")
+# print(hash_table)
+# print(hash_table.get_value('george@example.com'))
+
+print(hash_table)
+hash_table.delete_value('george@example.com')
 print(hash_table)
