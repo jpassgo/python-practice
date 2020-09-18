@@ -10,6 +10,17 @@ class HashTable:
     def set_value(self, key, value):
         hashed_key = hash(key)%self.size
         bucket = self.hash_table[hashed_key]
+        found_key = False
+
+        for index, record in enumerate(bucket):
+            record_key, record_index = record
+            if record_key == key:
+                found_key = True
+                break
+        
+        if found_key:
+            bucket[index] = (key, value)
+
         bucket.append((key, value))
 
     def get_value(self, key):
@@ -24,4 +35,6 @@ hash_table.set_value('john@example.com', "Guitarist/Vocalist")
 hash_table.set_value('paul@example.com', "Bassist/Vocalist")
 hash_table.set_value('ringo@example.com', "Drummer")
 hash_table.set_value('george@example.com', "Lead Guitarist")
+print(hash_table)
+hash_table.set_value('george@example.com', "Lead Guitarist/Vocalist")
 print(hash_table)
