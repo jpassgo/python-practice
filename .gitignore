@@ -1,0 +1,10 @@
+.idea/misc.xml
+.idea/modules.xml
+.idea/python-practice.iml
+.idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.DS_Store
+.idea/.gitignore
+basics/.DS_Store
+datastructures/binarysearchtree/__pycache__/Node.cpython-38.pyc
+performance_analyzer/__pycache__/demos.cpython-38.pyc
