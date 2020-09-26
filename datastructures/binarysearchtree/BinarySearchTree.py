@@ -9,10 +9,21 @@ class BinarySearchTree:
             key = Node(key)
         if self.root == None:
             self.root = key
+        else:
+            self._insert(self.root, key)
 
     # the underscore denotes this method as a private method
     def _insert(self, curr, key):
-        pass
+        if key.data > curr.data:
+            if curr.right_child == None:
+                curr.right_child = key
+            else:
+                self._insert(curr.right_child, key)
+        elif key.data < curr.data:
+            if curr.left_child == None:
+                curr.left_child = key
+            else:
+                self._insert(curr.left_child, key)
 
     def in_order(self):
         pass
