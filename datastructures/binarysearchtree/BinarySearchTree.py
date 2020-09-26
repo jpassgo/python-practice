@@ -26,10 +26,15 @@ class BinarySearchTree:
                 self._insert(curr.left_child, key)
 
     def in_order(self):
-        pass
+        # left, root, right
+        self._in_order(self.root)
+        print("")
 
     def _in_order(self, curr):
-        pass
+        if curr:
+            self._in_order(curr.left_child)
+            print(curr.data, end=" ")
+            self._in_order(curr.right_child)            
 
     def pre_order(self):
         pass
@@ -46,5 +51,9 @@ class BinarySearchTree:
 
 tree = BinarySearchTree()
 tree.insert("A")
+tree.insert("X")
+tree.insert("F")
+tree.insert("C")
+tree.insert("B")
 
-print(tree.root.data)
+print(tree.in_order())
