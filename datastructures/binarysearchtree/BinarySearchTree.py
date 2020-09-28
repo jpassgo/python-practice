@@ -48,6 +48,20 @@ class BinarySearchTree:
     def _post_order(self, curr):
         pass
 
+    def find_value(self, key):
+        return self._find_value(self.root, key)
+
+    def _find_value(self, curr, key):
+        if curr:
+            if key == curr.data:
+                return "Value found in tree"
+            elif key < curr.data:
+                return self._find_value(curr.left_child, key)
+            else:
+                return self._find_value(curr.right_child, key)
+        return "Value not found in tree"
+
+            
 
 tree = BinarySearchTree()
 tree.insert("A")
@@ -57,3 +71,5 @@ tree.insert("C")
 tree.insert("B")
 
 print(tree.in_order())
+
+print(tree.find_value("F"))
