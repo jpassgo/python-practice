@@ -61,6 +61,50 @@ class BinarySearchTree:
                 return self._find_value(curr.right_child, key)
         return "Value not found in tree"
 
+    def delete_value(self, key):
+        return self._delete_value(self.root, None, None, key)
+
+    def _delete_value(self, curr, parent, is_left, key):
+        if curr:
+            if key == curr.data:
+                if curr.left_child and curr.right_child:
+                    print("problem scenario")
+                elif curr.left_child == None and curr.right_child == None:
+                    self.swap_parents_children_with_leaf(parent, is_left)
+                elif curr.left_child == None:
+                    self.swap_parents_children_with_right_child(parent, curr, is_left)
+                else:
+                    self.swap_parents_children_with_left_child(parent, curr, is_left)
+            elif key < curr.data:
+                self._delete_value(curr.left_child, curr, True, key)
+            elif key > curr.data:
+                self._delete_value(curr.right_child, curr, False, key)
+        else:
+            print(f"{key} not found in Tree")
+        
+    def swap_parents_children_with_leaf(self, parent, is_left):
+        if is_left:
+            parent.left_child = None
+        else:
+            parent.right_child = None
+
+    def swap_parents_children_with_right_child(self, parent, curr, is_left):
+        if parent:
+            if is_left:  
+                parent.left_child = curr.right_child
+            else:
+                parent.right_child = curr.right_child
+        else:
+            self.root = curr.right_child
+
+    def swap_parents_children_with_left_child(self, parent, curr, is_left):
+        if parent:
+            if is_left:
+                parent.left_child = curr.left_child
+            else:
+                parent.right_child = curr.left_child
+        else:
+            self.root = curr.left_child
             
 
 tree = BinarySearchTree()
@@ -70,6 +114,9 @@ tree.insert("F")
 tree.insert("C")
 tree.insert("B")
 
-print(tree.in_order())
+tree.in_order()
+# print(tree.find_value("F"))
+tree.delete_value("F")
+tree.in_order()
 
-print(tree.find_value("F"))
+
