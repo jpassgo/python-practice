@@ -5,7 +5,7 @@ class Bicycle:
 
     def __init__(self):
         self.passengers = 0
-        self.speed = (0.0)
+        self.speed = 0.0
         self.rate_of_acceleration = 1.0
         self.interrupt = False
 
