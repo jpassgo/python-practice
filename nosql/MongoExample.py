@@ -26,11 +26,11 @@ post1, post2, post3 = {
 }, {
     'title': 'Post Two',
     'content': 'Post Two about Python and MongoDB',
-    'author': 'Jeff'
+    'author': 'Joe'
 }, {
     'title': 'Post Three',
     'content': 'Post Two about Python and MongoDB',
-    'author': 'Jeff'
+    'author': 'Jane'
 }
 
 # Inserting multiple documents at once
@@ -38,3 +38,4 @@ second_insert_result = posts.insert_many([post1, post2, post3])
 
 [print(f"Post Id: {id}") for id in second_insert_result.inserted_ids]
 
+print(posts.find_one({'author': 'Jeff'}))
