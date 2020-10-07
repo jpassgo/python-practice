@@ -1,8 +1,8 @@
 import time
 import decimal
+from Vehicle import Vehicle
 
-
-class Bicycle:
+class Bicycle(Vehicle):
 
     def __init__(self):
         self.passengers = 0
