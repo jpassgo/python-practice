@@ -4,8 +4,6 @@ from typing import Any
 
 class Vehicle(ABC):
 
-
-
     @abstractmethod
     def enter_vehicle(self) -> None:
         pass
