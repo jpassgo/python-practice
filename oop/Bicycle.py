@@ -2,6 +2,7 @@ import time
 import decimal
 from Vehicle import Vehicle
 
+
 class Bicycle(Vehicle):
 
     def __init__(self):
@@ -17,13 +18,14 @@ class Bicycle(Vehicle):
     def exit_vehicle(self):
         self.passengers -= 1
 
-    # Start the acceleration timer 
+    # Start the acceleration timer
     def begin_acceleration(self):
         self.acceleration_start_time = time.time()
 
     # 1. End the acceleration timer.
     # 2. Calculate time elapsed since acceleration began.
-    # 3. Multiply the time elapse by the rate of acceleration (1m per second) by 3.6 (conversion from meters per second to kilometers per hour).
+    # 3. Multiply the time elapse by the rate of acceleration (1m per second)
+    # by 3.6 (conversion from meters per second to kilometers per hour).
     def end_acceleration(self):
         seconds_elapsed = time.time() - self.acceleration_start_time
         seconds_elapsed = seconds_elapsed if seconds_elapsed <= 9 else 9
@@ -35,8 +37,9 @@ class Bicycle(Vehicle):
     def end_deceleration(self):
         seconds_elapsed = time.time() - self.acceleration_start_time
         seconds_elapsed = seconds_elapsed if seconds_elapsed <= 9 else 9
-        self.speed = self.speed - decimal.Decimal((self.rate_of_deceleration * seconds_elapsed) * 3.6).__round__(2)
-        self.speed = self.speed if self.speed > 0 else 0 
+        self.speed = self.speed - \
+            decimal.Decimal((self.rate_of_deceleration * seconds_elapsed) * 3.6).__round__(2)
+        self.speed = self.speed if self.speed > 0 else 0
 
     def decelerate(self):
         pass
