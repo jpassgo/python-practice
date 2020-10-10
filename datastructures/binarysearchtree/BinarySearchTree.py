@@ -1,5 +1,6 @@
 from Node import Node
 
+
 class BinarySearchTree:
     def __init__(self):
         self.root = None
@@ -7,7 +8,7 @@ class BinarySearchTree:
     def insert(self, key):
         if not isinstance(key, Node):
             key = Node(key)
-        if self.root == None:
+        if self.root is None:
             self.root = key
         else:
             self._insert(self.root, key)
@@ -15,12 +16,12 @@ class BinarySearchTree:
     # the underscore denotes this method as a private method
     def _insert(self, curr, key):
         if key.data > curr.data:
-            if curr.right_child == None:
+            if curr.right_child is None:
                 curr.right_child = key
             else:
                 self._insert(curr.right_child, key)
         elif key.data < curr.data:
-            if curr.left_child == None:
+            if curr.left_child is None:
                 curr.left_child = key
             else:
                 self._insert(curr.left_child, key)
@@ -34,14 +35,14 @@ class BinarySearchTree:
         if curr:
             self._in_order(curr.left_child)
             print(curr.data, end=" ")
-            self._in_order(curr.right_child)            
+            self._in_order(curr.right_child)
 
     def pre_order(self):
         pass
 
     def _pre_order(self, curr):
         pass
-    
+
     def post_order(self):
         pass
 
@@ -69,19 +70,21 @@ class BinarySearchTree:
             if key == curr.data:
                 if curr.left_child and curr.right_child:
                     print("problem scenario")
-                elif curr.left_child == None and curr.right_child == None:
+                elif curr.left_child is None and curr.right_child is None:
                     self.swap_parents_children_with_leaf(parent, is_left)
-                elif curr.left_child == None:
-                    self.swap_parents_children_with_right_child(parent, curr, is_left)
+                elif curr.left_child is None:
+                    self.swap_parents_children_with_right_child(
+                        parent, curr, is_left)
                 else:
-                    self.swap_parents_children_with_left_child(parent, curr, is_left)
+                    self.swap_parents_children_with_left_child(
+                        parent, curr, is_left)
             elif key < curr.data:
                 self._delete_value(curr.left_child, curr, True, key)
             elif key > curr.data:
                 self._delete_value(curr.right_child, curr, False, key)
         else:
             print(f"{key} not found in Tree")
-        
+
     def swap_parents_children_with_leaf(self, parent, is_left):
         if is_left:
             parent.left_child = None
@@ -90,7 +93,7 @@ class BinarySearchTree:
 
     def swap_parents_children_with_right_child(self, parent, curr, is_left):
         if parent:
-            if is_left:  
+            if is_left:
                 parent.left_child = curr.right_child
             else:
                 parent.right_child = curr.right_child
@@ -105,7 +108,7 @@ class BinarySearchTree:
                 parent.right_child = curr.left_child
         else:
             self.root = curr.left_child
-            
+
 
 tree = BinarySearchTree()
 tree.insert("A")
@@ -118,5 +121,3 @@ tree.in_order()
 # print(tree.find_value("F"))
 tree.delete_value("F")
 tree.in_order()
-
-

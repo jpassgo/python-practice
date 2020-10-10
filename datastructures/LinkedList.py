@@ -1,11 +1,12 @@
 class Node:
-    
+
     def __init__(self, data=None):
         self.data = data
         self.next = None
 
     def __str__(self):
         return f"{self.data}"
+
 
 class LinkedList:
 
@@ -28,19 +29,17 @@ class LinkedList:
     def append_val(self, x):
         if not isinstance(x, Node):
             x = Node(x)
-        if self.head == None:
+        if self.head is None:
             self.head = x
         else:
             self.tail.next = x
-        self.tail = x 
+        self.tail = x
 
-    def add_to_start(self, node):   
+    def add_to_start(self, node):
         temp = self.head
         self.head = node
         node.next = temp
-    
 
-    
     def search_val(self, x):
         if self.head.data == x:
             return 0
@@ -52,7 +51,6 @@ class LinkedList:
                 return count
             count += 1
             curr = curr.next
-            
 
     def remove_val_by_index(self, index):
         curr = self.head
@@ -64,20 +62,20 @@ class LinkedList:
             count += 1
             curr = curr.next
 
-
     def length(self):
         curr = self.head
         count = 0
         while curr.next is not None:
             curr = curr.next
-            count+=1
+            count += 1
         return count
 
     def reverse_list_recur(self, current, previous):
         pass
 
 
-node1, node2, node3, node4, node5,  = Node(1), Node(2), Node(3), Node(4), Node(5) 
+node1, node2, node3, node4, node5, = Node(
+    1), Node(2), Node(3), Node(4), Node(5)
 
 myList = LinkedList()
 
