@@ -13,7 +13,7 @@ class AVLTree:
             self._insert(self.root, node)
 
     def _insert(self, curr, node):
-        if node.data <= curr.data:
+        if node.data < curr.data:
             if curr.left == None:
                 curr.left = node
             else:
