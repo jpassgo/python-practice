@@ -24,6 +24,11 @@ class AVLTree:
             else:
                 self._insert(curr.right, node)
         
+    def left_rotation(self):
+        pass
+
+    def right_rotation(self):
+        pass
 
 
 
