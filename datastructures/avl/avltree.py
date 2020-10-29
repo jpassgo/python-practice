@@ -5,7 +5,6 @@ class AVLTree:
     def __init__(self):
         self.root = None
 
-
     def insert(self, node):
         if self.root == None:
             self.root = node
@@ -14,11 +13,13 @@ class AVLTree:
 
     def _insert(self, curr, node):
         if node.data < curr.data:
-            if curr.left == None:
+            node.height += 1 
+            if curr.left == None:    
                 curr.left = node
             else:
                 self._insert(curr.left, node)
         elif node.data >= curr.data:
+            node.height += 1
             if curr.right == None:
                 curr.right = node
             else:
@@ -32,5 +33,5 @@ class AVLTree:
 
 
 
-    
+
         
