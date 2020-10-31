@@ -14,4 +14,3 @@ for node in node_list:
     tree.insert(node)
     print(node.data)
     print(node.height)
-
