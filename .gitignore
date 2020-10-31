@@ -9,3 +9,5 @@ basics/.DS_Store
 datastructures/binarysearchtree/__pycache__/Node.cpython-38.pyc
 performance_analyzer/__pycache__/demos.cpython-38.pyc
 oop/__pycache__/Vehicle.cpython-38.pyc
+datastructures/avl/__pycache__/AVLTree.cpython-38.pyc
+datastructures/avl/__pycache__/Node.cpython-38.pyc
