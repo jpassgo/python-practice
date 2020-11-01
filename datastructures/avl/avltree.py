@@ -31,3 +31,16 @@ class AVLTree:
 
     def right_rotation(self):
         pass
+
+    def get_height(self, node, height=0):
+        if(node.height > height):
+            height = node.height
+        if node.left != None:
+            self.get_height(node.left, height)
+        if node.right != None:
+            self.get_height(node.right, height)
+        return height
+        
+    
+
+        
