@@ -12,5 +12,10 @@ while i < 10:
 
 for node in node_list:
     tree.insert(node)
-    print(node.data)
-    print(node.height)
+    print(f"Data: {node.data}")
+    # print(f"Height: {node.height}")
+    
+
+for node in node_list:
+    print(f"Height: {tree.get_height(node)}")
+
