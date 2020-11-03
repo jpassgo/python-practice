@@ -14,22 +14,34 @@ class AVLTree:
 
     def _insert(self, curr, node):
         if node.data < curr.data:
-            node.height += 1
-            if curr.left is None:
-                curr.left = node
-            else:
-                self._insert(curr.left, node)
+            if(get_height(node.left) - get_height(node.right) == 2):
+                node.height += 1
+                if curr.left is None:
+                    curr.left = node
+                else:
+                    self._insert(curr.left, node)
         elif node.data >= curr.data:
+            if(get_height(node.right) - get_height(node.left) == 2):
             node.height += 1
             if curr.right is None:
                 curr.right = node
             else:
                 self._insert(curr.right, node)
 
-    def left_rotation(self):
-        pass
+    def left_rotation(self, node):
+        left = node.left
+        node.left = left.right
+        let.right = node 
 
     def right_rotation(self):
+        right = node.right
+        node.right = right.left
+        right.left = node
+
+    def left_right_rotation(self, node):
+        pass
+
+    def right_left_rotation(self):
         pass
 
     def get_height(self, node, height=0):
