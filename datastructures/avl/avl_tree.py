@@ -31,7 +31,7 @@ class AVLTree:
     def left_rotation(self, node):
         left = node.left
         node.left = left.right
-        let.right = node 
+        let.right = node
 
     def right_rotation(self):
         right = node.right
@@ -47,12 +47,8 @@ class AVLTree:
     def get_height(self, node, height=0):
         if(node.height > height):
             height = node.height
-        if node.left != None:
+        if node.left is not None:
             self.get_height(node.left, height)
-        if node.right != None:
+        if node.right is not None:
             self.get_height(node.right, height)
         return height
-        
-    
-
-        
