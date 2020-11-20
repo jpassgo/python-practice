@@ -13,12 +13,14 @@ def is_email_valid(email):
     domain_part = email_parts[1]
     # print(f"local_part= {local_part} : domain_part= {domain_part}")
 
-    if(local_part_exceeds_character_limit(local_part)):
+    if(is_above_character_limit(local_part, 64)):
+        return re.match('^f', local_part).group() is not None 
+    else:
         return False
+    
 
-def local_part_exceeds_character_limit(local_part):
-    return True if len(local_part) > 64 else False
+def is_above_character_limit(part, limit):
+    return True if len(part) > limit else False
 
-is_email_valid("fakeemail@gmail.com")
-
-print(is_email_valid("fakeadasfdsfdsafdsafdsasfdsdafadsfdsfdsafdsafdsafdsafdsafdsafdsaemail@gmail.com"))
+print(is_email_valid("fakeemail@gmail.com"))
+print(is_email_valid("gakeadasfdsfdsafdsafdsasfdsdafadsfdsfdsafdsafdsafdsafdsafdsafdsaemail@gmail.com"))
