@@ -7,11 +7,18 @@ import re
 # The domain part cannot be more than 255 characters in length and must conform to the specification for hostnames which is a list of dot-separated DNS labels.
 # Each DNS label must not exceed 63 characters and should consist of any
 # combination of alphabetic characters, digits and hypens.
-def validate_email(email):
+def is_email_valid(email):
     email_parts = re.split('@', email)
     local_part = email_parts[0]
     domain_part = email_parts[1]
-    print(f"local_part= {local_part} : domain_part= {domain_part}")
+    # print(f"local_part= {local_part} : domain_part= {domain_part}")
 
+    if(local_part_exceeds_character_limit(local_part)):
+        return False
 
-validate_email("fakeemail@gmail.com")
+def local_part_exceeds_character_limit(local_part):
+    return True if len(local_part) > 64 else False
+
+is_email_valid("fakeemail@gmail.com")
+
+print(is_email_valid("fakeadasfdsfdsafdsafdsasfdsdafadsfdsfdsafdsafdsafdsafdsafdsafdsaemail@gmail.com"))
