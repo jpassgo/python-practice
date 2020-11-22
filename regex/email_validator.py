@@ -12,6 +12,7 @@ DOMAIN_PART_REGEX_PATTERN = '^[A-Za-z0-9-]'
 # Each DNS label must not exceed 63 characters and should consist of any
 # combination of alphabetic characters, digits and hypens.
 
+
 def is_email_valid(email):
     email_parts = re.split('@', email)
     local_part = email_parts[0]
@@ -29,6 +30,7 @@ def is_local_part_valid(local_part):
         return False
     else:
         return re.match(LOCAL_PART_REGEX_PATTERN, local_part) is not None
+
 
 def is_domain_part_valid(domain_part):
     if(is_above_character_limit(domain_part, 255)):
