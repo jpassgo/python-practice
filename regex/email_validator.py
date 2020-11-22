@@ -1,5 +1,9 @@
 import re
 
+
+LOCAL_PART_REGEX_PATTERN = '^[A-Za-z0-9!$%&‘*+–/=?^_`.{|}~]'
+DOMAIN_PART_REGEX_PATTERN = '^[A-Za-z0-9-]'
+
 # Valid email format
 # Email consists of two parts the `Local part` and the `Domain part`
 # The local part can be up to 64 characters in length and consist of any combination of alphabetic characters, digits, or any of the following special characters:
@@ -7,7 +11,6 @@ import re
 # The domain part cannot be more than 255 characters in length and must conform to the specification for hostnames which is a list of dot-separated DNS labels.
 # Each DNS label must not exceed 63 characters and should consist of any
 # combination of alphabetic characters, digits and hypens.
-
 
 def is_email_valid(email):
     email_parts = re.split('@', email)
@@ -25,8 +28,13 @@ def is_local_part_valid(local_part):
     if(is_above_character_limit(local_part, 64)):
         return False
     else:
-        return re.match(
-            '^[A-Za-z0-9!$%&‘*+–/=?^_`.{|}~]', local_part) is not None
+        return re.match(LOCAL_PART_REGEX_PATTERN, local_part) is not None
+
+def is_domain_part_valid(domain_part):
+    if(is_above_character_limit(domain_part, 255)):
+        return False
+    else:
+        return re.match(DOMAIN_PART_REGEX_PATTERN, domain_part) is not None
 
 
 def is_above_character_limit(part, limit):
