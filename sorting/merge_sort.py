@@ -15,9 +15,6 @@ def merge_sort(arr, l, r):
 
 def merge(arr, l, m, r):    
     # print(f"merge = left: {l}, mid: {m}, right: {r}")
-
-    
-
     left = []
     i = l
     while i < m:
