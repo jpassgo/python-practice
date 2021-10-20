@@ -1,58 +1,44 @@
 import numpy as np
 
+def merge_sort(array, left, right):
+    if(left < right):
+        middle = int(left + (right - left)/2)
+        merge_sort(array, left, middle)
+        merge_sort(array, middle + 1, right)
+        merge(array, left, right)
 
-def merge_sort(arr, l, r):
+def merge(array, left_start, right_end):
+    left_end = int((right_end + left_start)/2)
+    right_start = left_end + 1
+    size = right_end - left_start + 1
 
-    if l < r:
-        mid = int((l + (r - 1)) / 2)
-        print(f"left: {l}, mid {mid}, right: {r}")
+    temp = [0] * size
 
-        merge_sort(arr, l, mid)
-        merge_sort(arr, mid+1, r)
-        merge(arr, l, mid, r)
-
-
-
-def merge(arr, l, m, r):    
-    # print(f"merge = left: {l}, mid: {m}, right: {r}")
-    left = []
-    i = l
-    while i < m:
-        left[i] = arr[l]
-        i += 1
-
-    right = []
-    i = m+1
-    while i < r:
-        right[i] = arr[i + 1]
-        i += 1
-
-    i = 0
-    j = 0
-    k = 0
-    while i < len(left) and j < len(right):
-        if left[i] <= right[j]:
-            arr[k] = left[i]
-            i += 1                  
+    left, right, index = left_start,right_start,left_start
+    while(left < left_end and right < right_end):
+        if(array[left] <= array[right]):
+            temp[index] = array[left]            
+            left += 1
         else:
-            arr[k] = right[j]
-            j += 1
-        k += 1
-        
+            temp[index] = array[right]      
+            right += 1
+        index += 1
 
-    while i < len(left):
-        arr[k] = left[i]
-        i += 1
-        k += 1
+    while(left < left_end):
+        temp[index] = array[left]        
+        left += 1
+        index += 1
 
-    while j < len(right):
-        arr[k] = right[j]
-        j += 1
-        k += 1
-
-        
-
+    while(right < right_end):
+        temp[index] = array[right]        
+        right += 1
+        index += 1
     
+    for i in range(len(temp)-1):
+        if(temp[i] != 0):
+            array[i] = temp[i]
+
+        
     
 arr = [900, 89, 1, 323, 4, 5, 6, 8998]
 print(arr)
