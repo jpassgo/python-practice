@@ -4,15 +4,17 @@
 # 
 
 def rotate(array, k):
-    size = len(array)
-    temp_size = size
+    size = len(array)    
     
-    temp_array = [0] * temp_size
+    temp_array = [0] * size
     
     for index in range(size):
         temp_array[calculcate_new_index(index, k, size)] = array[index]
 
-    return temp_array
+    for index in range(size):
+        array[index] = temp_array[index]
+    
+    return array
         
 def calculcate_new_index(index, k, size):
     new_index = index + k
