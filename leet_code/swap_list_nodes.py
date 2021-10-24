@@ -17,11 +17,22 @@ class Solution:
 
     def swap_list_nodes(self, head: ListNode):
         return
-        
 
 
-    
 
-nodes = [ListNode(i) for i in [1, 2, 3, 4]]
 
-print(print(nodes[0]))
+def populate_nodes(head_value = 1, size = 0):
+    head = ListNode(head_value)
+    populate_nodes_recursive(head, head_value+1, size)
+    return head
+
+def populate_nodes_recursive(previous, value, size):
+    previous.next = ListNode(value)
+    if value >= size:
+        return
+    else:
+        populate_nodes_recursive(previous.next, value+1, size)
+
+
+head = populate_nodes(size = 5)
+
