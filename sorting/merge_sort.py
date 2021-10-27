@@ -5,42 +5,41 @@ def merge_sort(array, left, right):
         middle = int(left + (right - left)/2)
         merge_sort(array, left, middle)
         merge_sort(array, middle + 1, right)
-        merge(array, left, right)
+        merge(array, left, middle, right)
 
-def merge(array, left_start, right_end):
-    left_end = int((right_end + left_start)/2)
-    right_start = left_end + 1
-    size = right_end - left_start + 1
+def merge(array, l, m, r):
+    n1 = m-l+1
+    n2 = r-m
+    la = []
+    ra = []
+    for i in range(n1):
+        la.append(array[l+i])
 
-    temp = [0] * size
+    for i in range(n2):
+        ra.append(array[m+1+i])
 
-    left, right, index = left_start,right_start,left_start
-    while(left < left_end and right < right_end):
-        if(array[left] <= array[right]):
-            temp[index] = array[left]            
-            left += 1
+    i, j, k = 0, 0, l
+    while i < n1 and j < n2:
+        if la[i] <= ra[j]:        
+            array[k] = la[i]            
+            i += 1
         else:
-            temp[index] = array[right]      
-            right += 1
-        index += 1
+            array[k] = ra[j]
+            j += 1
+        k += 1
 
-    while(left < left_end):
-        temp[index] = array[left]        
-        left += 1
-        index += 1
-
-    while(right < right_end):
-        temp[index] = array[right]        
-        right += 1
-        index += 1
-    
-    for i in range(len(temp)-1):
-        if(temp[i] != 0):
-            array[i] = temp[i]
-
+    while i < n1:
+        array[k] = la[i]
+        k+=1
+        i+=1
+        
+    while j < n2:
+        array[k] = ra[j]
+        k+=1
+        j+=1
         
     
 arr = [900, 89, 1, 323, 4, 5, 6, 8998]
 print(arr)
-merge_sort(arr, 0, len(arr) - 1)
+merge_sort(arr, 0, len(arr) -1 )
 print(arr)
