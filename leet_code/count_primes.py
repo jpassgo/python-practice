@@ -6,18 +6,32 @@
 # https://leetcode.com/problems/count-primes/
 # 
 
-# Check the last digit of the number, depending on what number it ends in run a modulo check with the corresponding modulo numbers.
-# 
-# 
-
 class Solution:
     def countPrimes(self, n: int) -> int:
         primes = []
         for i in range(n):
-            if(i % 2 != 0):
-                remainder = str(i % 10)
-                if(remainder == 1):
-                    if(i % 11 != 0):
-                        primes.append(i)
-                elif(remainder == 3)
+            if i == 2:
+                primes.append(i)
+            if(i % 2 != 0 
+                and not self.modulo(i, 3)
+                and not self.modulo(i, 5)
+                and not self.modulo(i, 7)
+                and not self.modulo(i, 11)
+                and not self.modulo(i, 13)):                    
+                    primes.append(i)
 
+        return primes
+
+
+    def modulo(self, n, modulo):
+        if n == modulo:
+            return False
+        else:
+            return n % modulo == 0  
+
+
+
+
+solution = Solution()
+primes = solution.countPrimes(100)
+[print(f'{prime} ', end='') for prime in primes]
