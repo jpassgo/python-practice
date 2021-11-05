@@ -31,10 +31,6 @@ class Solution:
                 else:
                     return False
 
-
-
-
-    
     def populate_palindrome_map(self, current, map):
         if current.next:
             map[current.val] = map.get(current.val) + 1
@@ -43,9 +39,6 @@ class Solution:
             return map
 
 
-
-
-# For testing the solution
 def populate_nodes(head_value = 1, size = 0):
     head = ListNode(head_value)
     populate_nodes_recursively(head, head_value+1, size)
