@@ -37,7 +37,6 @@ class Twitter:
         tweets_in_order = []
         while len(most_recent_tweets) > 0:
             tweets_in_order = most_recent_tweets.pop()
-            
         return tweets_in_order
 
     def follow(self, followerId: int, followeeId: int) -> None:
@@ -45,11 +44,14 @@ class Twitter:
             self.users[followeeId].append(followerId)
         else:
             self.users[followeeId] = []
+            self.tweets[followeeId] = []
 
 
     def unfollow(self, followerId: int, followeeId: int) -> None:
-        if followeeId in self.users.keys():
-            self.users[followeeId].pop(followerId)
+        followers = self.users[followeeId]
+        users = self.users.keys()
+        if followeeId in users and followerId in followers:         
+            self.users[followeeId].pop(followerId)            
 
 
 # Your Twitter object will be instantiated and called as such:
