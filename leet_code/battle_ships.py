@@ -13,15 +13,50 @@ from typing import List
 
 class Solution:
     def countBattleships(self, board: List[List[str]]) -> int:
+        # list of dicts of lists of dicts
+        # where the key is the {row}x{column} (the starting coordinate) and the value is a list of coordinate pairs {row: column}
         battle_ship_tracker = {}
+        # visited coordinates   
+        visited_coordinates = []    
 
-        for item in board:
-            
+        for row in range(len(board)):   
+            column = 0     
+            while column < len(board[row]):
+                coordinate = board[row][column]
+                key = f'{row}x{column}'
+                if coordinate == 'X':                    
+                    battle_ship_tracker[key] = []
+                    column = self.searchHorizontally(row, column)
+                elif board[row+1][column] == 'X' and key not in visited_coordinates:
+                    battle_ship_tracker[key] = []
+                    self.searchVertically(row, column)
 
+                                    
 
+    def searchHorizontally(self, row, column) -> int:                            
+        battle_ship_tracker[f'{row}x{column}'].append({row: column})
+        visited_coordinates.append(f'{row}x{column}')
 
+        column += 1
+        coordinate = self.coordinate(board, row, column)
+        if coordinate == 'X':
+            self.searchHorizontally(row, column)
+        else:
+            return column
 
+    def searchVertically(self, row, column) -> int:
+        battle_ship_tracker[f'{row}x{column}'].append({row: column})
 
+        row += 1
+        coordinate = self.coordinate(board, row, column)
+        if cooridinate == 'X':
+            self.searchVertically(row, column)
+        else:
+            return row
+
+    def coordinate(self, board, row, column) -> int:
+        return board[row][column] if column < len(board[row]) and row < len(board) else '.' 
+        
 
 
 board = [["X",".",".","X"],[".",".",".","X"],[".",".",".","X"]]
