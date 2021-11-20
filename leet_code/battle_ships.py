@@ -15,9 +15,11 @@ class Solution:
     def countBattleships(self, board: List[List[str]]) -> int:
         # list of dicts of lists of dicts
         # where the key is the {row}x{column} (the starting coordinate) and the value is a list of coordinate pairs {row: column}
+        global battle_ship_tracker
         battle_ship_tracker = {}
         # visited coordinates   
-        visited_coordinates = []    
+        global visited_coordinates
+        visited_coordinates = []   
 
         for row in range(len(board)):   
             column = 0     
@@ -31,6 +33,10 @@ class Solution:
                     battle_ship_tracker[key] = []
                     self.searchVertically(row, column)
 
+                
+
+        return len(battle_ship_tracker)
+
                                     
 
     def searchHorizontally(self, row, column) -> int:                            
@@ -40,7 +46,7 @@ class Solution:
         column += 1
         coordinate = self.coordinate(board, row, column)
         if coordinate == 'X':
-            self.searchHorizontally(row, column)
+            return self.searchHorizontally(row, column)
         else:
             return column
 
@@ -50,7 +56,7 @@ class Solution:
         row += 1
         coordinate = self.coordinate(board, row, column)
         if cooridinate == 'X':
-            self.searchVertically(row, column)
+            return self.searchVertically(row, column)
         else:
             return row
 
