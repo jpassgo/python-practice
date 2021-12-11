@@ -21,9 +21,11 @@ class TreeNode:
 
 class Solution:
     def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
+        new_root = TreeNode()
+
         
 
-
+    
 
 
 root1 = TreeNode(10, TreeNode(7, TreeNode(6), TreeNode(8)), TreeNode(13, TreeNode(11), TreeNode(15)))
