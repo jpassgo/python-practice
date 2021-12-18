@@ -11,62 +11,38 @@
 
 from typing import List
 
-class Solution:
-    def countBattleships(self, board: List[List[str]]) -> int:
-        # list of dicts of lists of dicts
-        # where the key is the {row}x{column} (the starting coordinate) and the value is a list of coordinate pairs {row: column}
-        global battle_ship_tracker
-        battle_ship_tracker = {}
-        # visited coordinates   
-        global visited_coordinates
-        visited_coordinates = []   
 
-        for row in range(len(board)):   
-            column = 0     
-            while column < len(board[row]):
-                coordinate = board[row][column]
-                key = f'{row}x{column}'
-                if coordinate == 'X':                    
-                    battle_ship_tracker[key] = []
-                    column = self.searchHorizontally(row, column)
-                elif board[row+1][column] == 'X' and key not in visited_coordinates:
-                    battle_ship_tracker[key] = []
-                    self.searchVertically(row, column)
+def countBattleships(board: List[List[str]]) -> int:
+    battleship_counter = 0
+    temp_board = board
 
-                
+    row_count = len(board) - 1
+    column_count = len(board[0]) - 1
+    x, y = 0, 0
+    while x <= row_count:
+        while y <= column_count:
+            if temp_board[x][y] == 'X':
+                temp_board = shipFound(temp_board, x, y, row_count, column_count)
+                battleship_counter += 1
+            y += 1
+        x += 1
 
-        return len(battle_ship_tracker)
-
-                                    
-
-    def searchHorizontally(self, row, column) -> int:                            
-        battle_ship_tracker[f'{row}x{column}'].append({row: column})
-        visited_coordinates.append(f'{row}x{column}')
-
-        column += 1
-        coordinate = self.coordinate(board, row, column)
-        if coordinate == 'X':
-            return self.searchHorizontally(row, column)
-        else:
-            return column
-
-    def searchVertically(self, row, column) -> int:
-        battle_ship_tracker[f'{row}x{column}'].append({row: column})
-
-        row += 1
-        coordinate = self.coordinate(board, row, column)
-        if cooridinate == 'X':
-            return self.searchVertically(row, column)
-        else:
-            return row
-
-    def coordinate(self, board, row, column) -> int:
-        return board[row][column] if column < len(board[row]) and row < len(board) else '.' 
+    return battleship_counter
         
 
+    
+def shipFound(temp_board, x, y, row_count, column_count) -> bool:        
+    temp_board[x][y] = '.'
+    if x == row_count or y == column_count or temp_board[x+1][y] == '.' or temp_board[x][y+1] == '.':
+        return temp_board
+    elif temp_board[x+1][y] == 'X':        
+        return shipFound(temp_board, x+1, y, row_count, column_count)
+    elif temp_board[x][y+1] == 'X':        
+        return shipFound(temp_board, x+1, y, row_count, column_count)
 
 board = [["X",".",".","X"],[".",".",".","X"],[".",".",".","X"]]
 
-solution = Solution()
+print(countBattleships(board))
 
-assert solution.countBattleships(board)
+board = [["."]]
+print(countBattleships(board))
