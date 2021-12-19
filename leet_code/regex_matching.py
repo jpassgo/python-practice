@@ -34,11 +34,22 @@ class Solution:
                 s_index += 1
                 return
             elif op == '*':
-                while s[s_index] == op[op_index-1][len(op[op_index-1])]:                    
+                while s[s_index] == op[op_index-1][len(op[op_index-1])-1]:                    
                     s_index += 1
             elif op_len > 0:
-                i
-                while 
+                op_char = 0
+                while s[s_index] == op[op_index][op_char]:
+                    op_char += 1
+                    s_index += 1
+                
+                if op_char != len(op[op_index]):
+                    matches = False
+            else:
+                matches = False
+                
+        return matches
 
 
         
+solution = Solution()
+print(solution.isMatch('aaa', '.a*'))
