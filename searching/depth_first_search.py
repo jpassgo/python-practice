@@ -13,19 +13,39 @@ root = TreeNode(10, TreeNode(7, TreeNode(6), TreeNode(8)), TreeNode(13, TreeNode
 def depth_first_search(value, root):
     stack = []
     stack.append(root)
-    while len(stack) == 0:
+    while len(stack) != 0:
         current_node = stack.pop()
-        if current_node.left != None:
-            stack.append(current_node.left)
+        print(current_node.val)
+        if current_node.val == value:
+            return True        
         if current_node.right != None:
             stack.append(current_node.right)
+        if current_node.left != None:
+            stack.append(current_node.left)
 
-def recursive_depth_first_search(value, current_node, stack) -> bool:
-    
-    
+    return False
+       
+
+def breadth_first_search(value, node):
+    queue = []
+    queue.append(node)
+    while len(queue) != 0:
+        current_node = queue.pop(0)
+        print(current_node.val)
+        if current_node.val == value:
+            return True      
+        if current_node.left != None:
+            queue.append(current_node.left)
+        if current_node.right != None:
+            queue.append(current_node.right)
         
-
-
+    
+    
 print(depth_first_search(6, root))
-print(depth_first_search(29, root))
-print(depth_first_search(13, root))
+# print(depth_first_search(29, root))
+# print(depth_first_search(13, root))
+
+    
+print(breadth_first_search(6, root))
+# print(breadth_first_search(29, root))
+# print(breadth_first_search(13, root))
