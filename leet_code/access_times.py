@@ -64,6 +64,27 @@ def access_times(access_logs):
         if current_resource in structured_logs:
             structured_logs[current_resource] = [current_time]
         else:
-            structured_logs[current_resource].append(current_time)
+            logs = structured_logs[current_resource]
+            structured_logs[current_resource] = logs + current_time
 
-    
+    print(structured_logs)
+
+
+logs1 = [
+    ["58523", "user_1", "resource_1"],
+    ["62314", "user_2", "resource_2"],
+    ["54001", "user_1", "resource_3"],
+    ["200", "user_6", "resource_5"],    
+    ["215", "user_6", "resource_4"],
+    ["54060", "user_2", "resource_3"],
+    ["53760", "user_3", "resource_3"],
+    ["58522", "user_22", "resource_1"],
+    ["53651", "user_5", "resource_3"],
+    ["2", "user_6", "resource_1"],
+    ["100", "user_6", "resource_6"],
+    ["400", "user_7", "resource_2"],
+    ["100", "user_8", "resource_6"],
+    ["54359", "user_1", "resource_3"],
+]
+
+access_times(logs1)
