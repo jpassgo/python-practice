@@ -12,8 +12,7 @@ class MinHeap:
         
         val_index_found = False
         val_index = len(self.heap) - 1        
-        i = int(val_index / 2)
-        print(i)
+        i = int(val_index / 2)        
         while val_index >= 0 and val_index_found == False:
             if self.heap[val_index] < self.heap[i]:
                 self.heap[val_index], self.heap[i] = self.heap[i], self.heap[val_index]
