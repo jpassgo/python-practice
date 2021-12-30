@@ -21,7 +21,19 @@ class MinHeap:
             else:
                 val_index_found = True
 
-min_heap = MinHeap([18, 23, 76, 98, 35, 22, 64])
+    def remove(self):
+        min_element = self.heap[0]
+        last_element = self.heap[len(self.heap)-1]
+        self.heap[0] = last_element
+
+        
+        
+min_heap = MinHeap()
 print(min_heap)
+min_heap.insert(32)
+min_heap.insert(43)
+min_heap.insert(12)
+min_heap.insert(22)
+min_heap.insert(16)
 min_heap.insert(3)
 print(min_heap)
