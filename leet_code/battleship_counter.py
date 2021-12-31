@@ -11,11 +11,7 @@ class Solution:
             j = 0
             while j <= cols:                
                 if f'{i}{j}' not in visited and board[i][j] == 'X':
-                       
-                    if i == 2 and j == 0:
-                        print(f'{i}{j}')  
-                    ship_count += 1
-                    
+                    ship_count += 1 
                     visited = self.dfs(board, i, j, rows, cols, visited)                    
                 
                 j += 1                
