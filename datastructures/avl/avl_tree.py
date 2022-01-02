@@ -6,49 +6,50 @@ class AVLTree:
     def __init__(self):
         self.root = None
 
-    def insert(self, node):
-        if self.root is None:
-            self.root = node
+    def insert(self, root, data):
+        if not root:
+            return Node(data)
+        elif data < root.data:
+            root.left = insert(root.left, data)
         else:
-            self._insert(self.root, node)
+            root.right = insert(root.right, data)
 
-    def _insert(self, curr, node):
-        if node.data < curr.data:
-            if(get_height(node.left) - get_height(node.right) == 2):
-                node.height += 1
-                if curr.left is None:
-                    curr.left = node
-                else:
-                    self._insert(curr.left, node)
-        elif node.data >= curr.data:
-            if(get_height(node.right) - get_height(node.left) == 2):
-            node.height += 1
-            if curr.right is None:
-                curr.right = node
+        root.height = 1 + max(self.get_height(root.left), self.get_height(root.right))
+
+        balanceFactor = self.get_balance(root)
+
+        # Left heavy sub tree
+        if balanceFactor > 1:
+            # left left
+            if data < root.left.data:
+                return self.right_rotation(root)
+            # left right
             else:
-                self._insert(curr.right, node)
+                return self.left_right_rotation(root)
+        if balanceFactor < -1:
+            # right right
+            if data > root.right.data:
+                return self.left_rotation(root)
+            # right left
+            else:
+                return self.right_left_rotation(root)
+
+        return root
 
     def left_rotation(self, node):
-        left = node.left
-        node.left = left.right
-        let.right = node
+        
+        return node
 
-    def right_rotation(self):
-        right = node.right
-        node.right = right.left
-        right.left = node
+    def right_rotation(self, node):
+        node.left.right = node
+        node = node.left
+        return
 
     def left_right_rotation(self, node):
         pass
 
-    def right_left_rotation(self):
+    def right_left_rotation(self, node):
         pass
 
-    def get_height(self, node, height=0):
-        if(node.height > height):
-            height = node.height
-        if node.left is not None:
-            self.get_height(node.left, height)
-        if node.right is not None:
-            self.get_height(node.right, height)
-        return height
+    def rebalance(self, node):
+        if 
