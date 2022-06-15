@@ -1,33 +1,41 @@
 from typing import List
 
 class Solution:
-    def countBattleships(self, board: List[List[str]]) -> int:
-        ship_count = 0
-        i, j = 0, 0
-        rows = len(board)-1
-        cols = len(board[0])-1
-        visited = []
-        while i <= rows:
-            j = 0
-            while j <= cols:                
-                if f'{i}{j}' not in visited and board[i][j] == 'X':
-                    ship_count += 1 
-                    visited = self.dfs(board, i, j, rows, cols, visited)                                    
-                j += 1                
-            i+=1                        
-            
-        return ship_count
     
-    
-    
-    def dfs(self, board, i, j, rows, cols, visited):
-        visited.append(f'{i}{j}')
-        
-        if i < rows and board[i+1][j] == 'X':
-            return self.dfs(board, i+1, j, rows, cols, visited)
-        elif j < cols and board[i][j+1] == 'X':
-            return self.dfs(board, i, j+1, rows, cols, visited)
-        return visited
+    def countBattleships(self, board: List[List]) -> int: 
+        rows = len(board) - 1
+        columns = len(board[0]) - 1
+
+        number_of_ships = 0
+
+        x = 0
+        y = 0
+
+        # iterate through board until we find an X, then do DFS to find the rest of the ship
+        while x <= rows:
+             while y <= columns:
+                if board[x][y] == 'X':
+                    number_of_ships += 1
+                    # perform dfs
+                    board = self.dfs(board, x, y, rows, columns)
+                y += 1
+             x += 1
+
+        return number_of_ships
+
+
+    def dfs(self, board, x, y, rows, columns) -> List[List]:
+        if x < rows and y < columns:
+            board[x][y] = '.'
+            # do recursive checks
+            if board[x+1][y] == 'X':
+                self.dfs(board, x+1, y, rows, columns)
+            elif board[x][y+1] == 'X':
+                self.dfs(board, x, y+1, rows, columns)
+            else:
+                return board    
+        else:
+            return board
 
 
 solution = Solution()
