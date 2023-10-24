@@ -1,12 +1,13 @@
-# 
+#
 # 234. Palindrome Linked List
-# 
+#
 # Given the head of a singly linked list, return true if it is a palindrome.
-# 
+#
 # https://leetcode.com/problems/palindrome-linked-list/
-# 
+#
 
 from typing import Optional
+
 
 # Definition for singly-linked list.
 class ListNode:
@@ -16,8 +17,7 @@ class ListNode:
 
 
 class Solution:
-
-    def isPalindrome(self, head: Optional[ListNode]) -> bool:  
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
         palindrome_counter_map = self.populate_palindrome_map(head, {})
 
         odd_counter = 0
@@ -39,10 +39,11 @@ class Solution:
             return map
 
 
-def populate_nodes(head_value = 1, size = 0):
+def populate_nodes(head_value=1, size=0):
     head = ListNode(head_value)
-    populate_nodes_recursively(head, head_value+1, size)
+    populate_nodes_recursively(head, head_value + 1, size)
     return head
+
 
 def populate_nodes_recursively(previous, value, size):
     current = ListNode(value)
@@ -51,10 +52,21 @@ def populate_nodes_recursively(previous, value, size):
         current.next = None
         return
     else:
-        populate_nodes_recursively(previous.next, value+1, size)
+        populate_nodes_recursively(previous.next, value + 1, size)
 
 
-head = ListNode(1, ListNode(2, ListNode(2, ListNode(1, ))))
+head = ListNode(
+    1,
+    ListNode(
+        2,
+        ListNode(
+            2,
+            ListNode(
+                1,
+            ),
+        ),
+    ),
+)
 
 solution = Solution()
 print(solution.isPalindrome(head))

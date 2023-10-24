@@ -1,9 +1,9 @@
-
-def generate_parentheses():       
+def generate_parentheses():
     print(back_track())
     return 1
 
-def back_track(well_form_parentheses = [], s = [], left = 0, right = 0, n: int = 3):
+
+def back_track(well_form_parentheses=[], s=[], left=0, right=0, n: int = 3):
     if len(s) == 2 * n:
         print(s)
         print("\n")
@@ -15,7 +15,7 @@ def back_track(well_form_parentheses = [], s = [], left = 0, right = 0, n: int =
         s.append("(")
         print(s)
         print("\n")
-        back_track(well_form_parentheses, s, left+1, right, n)
+        back_track(well_form_parentheses, s, left + 1, right, n)
         s.pop()
         print(s)
         print("\n")
@@ -25,11 +25,11 @@ def back_track(well_form_parentheses = [], s = [], left = 0, right = 0, n: int =
         s.append(")")
         print(s)
         print("\n")
-        back_track(well_form_parentheses, s, left, right+1, n)
+        back_track(well_form_parentheses, s, left, right + 1, n)
         s.pop()
         print(s)
         print("\n")
-    
+
     return well_form_parentheses
 
 

@@ -73,11 +73,9 @@ class BinarySearchTree:
                 elif curr.left_child is None and curr.right_child is None:
                     self.swap_parents_children_with_leaf(parent, is_left)
                 elif curr.left_child is None:
-                    self.swap_parents_children_with_right_child(
-                        parent, curr, is_left)
+                    self.swap_parents_children_with_right_child(parent, curr, is_left)
                 else:
-                    self.swap_parents_children_with_left_child(
-                        parent, curr, is_left)
+                    self.swap_parents_children_with_left_child(parent, curr, is_left)
             elif key < curr.data:
                 self._delete_value(curr.left_child, curr, True, key)
             elif key > curr.data:

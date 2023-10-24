@@ -7,7 +7,7 @@
 def find_kth_largest_value(array, k):
     left = 0
     right = len(array) - 1
-    
+
     while left <= right:
         pivot_index = partition(array, left, right)
         if pivot_index == len(array) - k:
@@ -16,9 +16,10 @@ def find_kth_largest_value(array, k):
             right = pivot_index - 1
         else:
             left = pivot_index + 1
-    
+
     return -1
-    
+
+
 def partition(array, left, right):
     pivot = array[right]
     index = left
@@ -29,5 +30,5 @@ def partition(array, left, right):
     array[index], array[right] = array[right], array[index]
     return index
 
- 
+
 print(find_kth_largest_value([5, 7, 2, 3, 4, 1, 6], 3))

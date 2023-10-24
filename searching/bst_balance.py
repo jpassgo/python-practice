@@ -26,6 +26,9 @@ def is_balanced(node):
 
     return 1 + max(left_height, right_height)
 
-root = TreeNode(10, TreeNode(7, TreeNode(6), TreeNode(8)), TreeNode(13, TreeNode(11), TreeNode(15)))
+
+root = TreeNode(
+    10, TreeNode(7, TreeNode(6), TreeNode(8)), TreeNode(13, TreeNode(11), TreeNode(15))
+)
 
 print(height(root))

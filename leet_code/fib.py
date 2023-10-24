@@ -7,20 +7,20 @@
 # f6 = 8
 # f7 = 13
 
+
 def getNthFib(n):
-	return fib(n)
-	
+    return fib(n)
+
 
 def fib(n, memo={}):
-	if n == 1:
-		return 0
-	elif n == 2:
-		return 1
-	
-	memo[n] = fib(n-2) + fib(n-1)
-	
-	return memo[n]
+    if n == 1:
+        return 0
+    elif n == 2:
+        return 1
 
+    memo[n] = fib(n - 2) + fib(n - 1)
+
+    return memo[n]
 
 
 print(getNthFib(6))

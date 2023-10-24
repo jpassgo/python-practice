@@ -4,7 +4,6 @@ from Vehicle import Vehicle
 
 
 class Bicycle(Vehicle):
-
     def __init__(self):
         self.passengers = 0
         self.speed = decimal.Decimal(0.0)
@@ -37,11 +36,9 @@ class Bicycle(Vehicle):
     def end_deceleration(self):
         seconds_elapsed = time.time() - self.acceleration_start_time
         seconds_elapsed = seconds_elapsed if seconds_elapsed <= 9 else 9
-        self.speed = self.speed - \
-            decimal.Decimal(
-                (self.rate_of_deceleration *
-                 seconds_elapsed) *
-                3.6).__round__(2)
+        self.speed = self.speed - decimal.Decimal(
+            (self.rate_of_deceleration * seconds_elapsed) * 3.6
+        ).__round__(2)
         self.speed = self.speed if self.speed > 0 else 0
 
     def decelerate(self):

@@ -18,14 +18,15 @@ def groupAnagrams(words):
 
     return anagrams
 
-def anagram_matches(anagram, word): 
+
+def anagram_matches(anagram, word):
     for letter in word:
         if letter in anagram:
-            anagram.replace(letter, '', 1)
+            anagram.replace(letter, "", 1)
         else:
             return False
 
     return True
 
 
-print(groupAnagrams(['foo', 'flop', 'olfp','yo','act','oy','cat','tac']))
+print(groupAnagrams(["foo", "flop", "olfp", "yo", "act", "oy", "cat", "tac"]))

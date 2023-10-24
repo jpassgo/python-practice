@@ -1,5 +1,4 @@
 def move_element_to_end(array, toMove):
-
     k = 0
     for index, value in enumerate(array):
         if value == toMove:
@@ -9,4 +8,3 @@ def move_element_to_end(array, toMove):
             array[index] = toMove
 
     return array
-

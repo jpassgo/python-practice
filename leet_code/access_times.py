@@ -1,6 +1,6 @@
-# 
-# Suppose we have an unsorted log file of accesses to web resources. Each log entry consists of an access time, 
-# the ID of the user making the access, and the resource ID. 
+#
+# Suppose we have an unsorted log file of accesses to web resources. Each log entry consists of an access time,
+# the ID of the user making the access, and the resource ID.
 # The access time is represented as seconds since 00:00:00, and all times are assumed to be in the same day.
 #
 # Example:
@@ -8,7 +8,7 @@
 #     ["58523", "user_1", "resource_1"],
 #     ["62314", "user_2", "resource_2"],
 #     ["54001", "user_1", "resource_3"],
-#     ["200", "user_6", "resource_5"],    
+#     ["200", "user_6", "resource_5"],
 #     ["215", "user_6", "resource_4"],
 #     ["54060", "user_2", "resource_3"],
 #     ["53760", "user_3", "resource_3"],
@@ -34,8 +34,8 @@
 # logs3 = [
 #     ["300", "user_10", "resource_5"]
 # ]
-# 
-# Write a function that takes the logs and returns the resource with the highest number of accesses in any 5 minute window, 
+#
+# Write a function that takes the logs and returns the resource with the highest number of accesses in any 5 minute window,
 # together with how many accesses it saw.
 # Expected Output:
 # most_requested_resource(logs1) # => ('resource_3', 3)
@@ -51,12 +51,12 @@
 def access_times(access_logs):
     structured_logs = {}
     for access in access_logs:
-        current_resource = ''
-        current_time = ''
+        current_resource = ""
+        current_time = ""
         for item in access:
-            if item.startswith('re'):
+            if item.startswith("re"):
                 current_resource = item
-            elif item.startswith('user'):
+            elif item.startswith("user"):
                 break
             else:
                 current_time = item
@@ -74,7 +74,7 @@ logs1 = [
     ["58523", "user_1", "resource_1"],
     ["62314", "user_2", "resource_2"],
     ["54001", "user_1", "resource_3"],
-    ["200", "user_6", "resource_5"],    
+    ["200", "user_6", "resource_5"],
     ["215", "user_6", "resource_4"],
     ["54060", "user_2", "resource_3"],
     ["53760", "user_3", "resource_3"],

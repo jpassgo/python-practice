@@ -1,10 +1,9 @@
-# 
+#
 # Given a list and a target value, determine if two numbers in the list sum up to the target
-# 
+#
 
 
 def target_sum(arr, target):
-
     compliment_dict = {}
     for item in arr:
         compliment = target - item

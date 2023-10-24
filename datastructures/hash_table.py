@@ -1,5 +1,4 @@
 class HashTable:
-
     def __init__(self, size):
         self.size = size
         self.hash_table = self.create_buckets()
@@ -66,15 +65,15 @@ class HashTable:
 
 hash_table = HashTable(10)
 # print(hash_table)
-hash_table.set_value('john@example.com', "Guitarist/Vocalist")
-hash_table.set_value('paul@example.com', "Bassist/Vocalist")
-hash_table.set_value('ringo@example.com', "Drummer")
-hash_table.set_value('george@example.com', "Lead Guitarist")
+hash_table.set_value("john@example.com", "Guitarist/Vocalist")
+hash_table.set_value("paul@example.com", "Bassist/Vocalist")
+hash_table.set_value("ringo@example.com", "Drummer")
+hash_table.set_value("george@example.com", "Lead Guitarist")
 # print(hash_table)
-hash_table.set_value('george@example.com', "Lead Guitarist/Vocalist")
+hash_table.set_value("george@example.com", "Lead Guitarist/Vocalist")
 # print(hash_table)
 # print(hash_table.get_value('george@example.com'))
 
 print(hash_table)
-hash_table.delete_value('george@example.com')
+hash_table.delete_value("george@example.com")
 print(hash_table)

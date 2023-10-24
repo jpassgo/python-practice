@@ -1,8 +1,8 @@
 import re
 
 
-LOCAL_PART_REGEX_PATTERN = '^[A-Za-z0-9!$%&‘*+–/=?^_`.{|}~]'
-DOMAIN_PART_REGEX_PATTERN = '^[A-Za-z0-9-]'
+LOCAL_PART_REGEX_PATTERN = "^[A-Za-z0-9!$%&‘*+–/=?^_`.{|}~]"
+DOMAIN_PART_REGEX_PATTERN = "^[A-Za-z0-9-]"
 
 # Valid email format
 # Email consists of two parts the `Local part` and the `Domain part`
@@ -14,26 +14,26 @@ DOMAIN_PART_REGEX_PATTERN = '^[A-Za-z0-9-]'
 
 
 def is_email_valid(email):
-    email_parts = re.split('@', email)
+    email_parts = re.split("@", email)
     local_part = email_parts[0]
     domain_part = email_parts[1]
     # print(f"local_part= {local_part} : domain_part= {domain_part}")
 
-    if(is_local_part_valid(local_part)):
+    if is_local_part_valid(local_part):
         return True
     else:
         return False
 
 
 def is_local_part_valid(local_part):
-    if(is_above_character_limit(local_part, 64)):
+    if is_above_character_limit(local_part, 64):
         return False
     else:
         return re.match(LOCAL_PART_REGEX_PATTERN, local_part) is not None
 
 
 def is_domain_part_valid(domain_part):
-    if(is_above_character_limit(domain_part, 255)):
+    if is_above_character_limit(domain_part, 255):
         return False
     else:
         return re.match(DOMAIN_PART_REGEX_PATTERN, domain_part) is not None
@@ -44,5 +44,8 @@ def is_above_character_limit(part, limit):
 
 
 print(is_email_valid("fakee&(((^mail@gmail.com"))
-print(is_email_valid(
-    "gakeadasfdsfdsafdsafdsasfdsdafadsfdsfdsafdsafdsafdsafdsafdsafdsaemail@gmail.com"))
+print(
+    is_email_valid(
+        "gakeadasfdsfdsafdsafdsasfdsdafadsfdsfdsafdsafdsafdsafdsafdsafdsaemail@gmail.com"
+    )
+)

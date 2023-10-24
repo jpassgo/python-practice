@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 
 
 class Vehicle(ABC):
-
     @abstractmethod
     def enter_vehicle(self) -> None:
         pass

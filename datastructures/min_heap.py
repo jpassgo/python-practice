@@ -1,18 +1,16 @@
-
 class MinHeap:
-
-    def __init__(self, heap = []):
+    def __init__(self, heap=[]):
         self.heap = heap
 
     def __repr__(self):
-        return f'{self.heap}'
+        return f"{self.heap}"
 
     def insert(self, value):
         self.heap.append(value)
-        
+
         val_index_found = False
-        val_index = len(self.heap) - 1        
-        i = int(val_index / 2)        
+        val_index = len(self.heap) - 1
+        i = int(val_index / 2)
         while val_index >= 0 and val_index_found == False:
             if self.heap[val_index] < self.heap[i]:
                 self.heap[val_index], self.heap[i] = self.heap[i], self.heap[val_index]
@@ -23,11 +21,10 @@ class MinHeap:
 
     def remove(self):
         min_element = self.heap[0]
-        last_element = self.heap[len(self.heap)-1]
+        last_element = self.heap[len(self.heap) - 1]
         self.heap[0] = last_element
 
-        
-        
+
 min_heap = MinHeap()
 print(min_heap)
 min_heap.insert(32)

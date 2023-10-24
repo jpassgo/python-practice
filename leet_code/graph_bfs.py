@@ -1,9 +1,9 @@
-
 from typing import List
 
 from collections import deque
 
-def bfs(graph: List[List[int]], s: int=0):
+
+def bfs(graph: List[List[int]], s: int = 0):
     # Set for keeping track of visited nodes
     visited = set()
 
@@ -22,7 +22,5 @@ def bfs(graph: List[List[int]], s: int=0):
                 queue.appendleft(node)
 
 
-
-
-graph = [[1,2], [0,2,4], [0,1,3], [2], [1]]
+graph = [[1, 2], [0, 2, 4], [0, 1, 3], [2], [1]]
 bfs(graph)

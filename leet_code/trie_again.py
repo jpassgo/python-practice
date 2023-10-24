@@ -1,13 +1,10 @@
-
 class TrieNode:
-
     def __init__(self):
         self.children = {}
         self.isCompleteWord = False
 
 
 class Trie:
-
     def __init__(self):
         self.root = TrieNode()
 
@@ -24,7 +21,6 @@ class Trie:
         if not node.isCompleteWord:
             node.isCompleteWord = True
 
-
     def is_word_present(self, word) -> bool:
         node = self.root
 
@@ -39,7 +35,7 @@ class Trie:
 
 trie = Trie()
 
-trie.add_word('hello')
+trie.add_word("hello")
 
-assert trie.is_word_present('hello') == True
-assert trie.is_word_present('hel') == False
+assert trie.is_word_present("hello") == True
+assert trie.is_word_present("hel") == False

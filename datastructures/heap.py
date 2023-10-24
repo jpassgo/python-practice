@@ -6,18 +6,8 @@ class Heap:
     def __init__(self):
         self.array = []
 
-    def insert(self, val):
-        self.array.append(val)
-        self.bubble_up(len(self.array) - 1)
-
-    def bubble_up(self, index):            
-        parent_index = int((index - 2)/2) if index % 2 == 0 else int((index - 1)/2)
-        while parent_index >= 0:            
-            if self.array[index] < self.array[parent_index]:
-                self.array[index], self.array[parent_index] = self.array[parent_index], self.array[index]
-                self.bubble_up(parent_index)
-            else:
-                break
+    def insert(self, element):
+        
 
 
 min_heap = Heap()

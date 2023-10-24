@@ -5,13 +5,7 @@ print(sorted(l))
 print(l)
 
 # Sort and modify the list
-l.sort()
-print(l)
-
-# Slicing
-print(l[:3])
-print(l[3:5])
-
+l.sort() print(l) # Slicing print(l[:3])
 # List
 l = [1, 2, 3, 4, 4, 5]
 print(l)

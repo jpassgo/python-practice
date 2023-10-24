@@ -1,10 +1,10 @@
 # 938. Range Sum of BST
-# 
-# Given the root node of a binary search tree and two integers low and high, return the sum of values of all nodes 
+#
+# Given the root node of a binary search tree and two integers low and high, return the sum of values of all nodes
 # with a value in the inclusive range [low, high].
-# 
+#
 # https://leetcode.com/problems/range-sum-of-bst/
-# 
+#
 
 
 class TreeNode:
@@ -15,9 +15,10 @@ class TreeNode:
 
 
 def rangeSumBST(root: Optional[TreeNode], low: int, high: int) -> int:
-        return recursivelySumNodes(root, low, high)
+    return recursivelySumNodes(root, low, high)
 
-def recursivelySumNodes(node, low, high, sum=0):     
+
+def recursivelySumNodes(node, low, high, sum=0):
     val = node.val
     if val >= low and val <= high:
         sum += val
@@ -29,5 +30,3 @@ def recursivelySumNodes(node, low, high, sum=0):
         sum = recursivelySumNodes(node.right, low, high, sum)
 
     return sum
-
-        

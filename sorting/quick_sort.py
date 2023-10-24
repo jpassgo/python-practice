@@ -1,4 +1,3 @@
-
 def quicksort(array):
     if len(array) < 2:
         return array
@@ -12,7 +11,8 @@ def quicksort(array):
                 equal.append(num)
             else:
                 larger.append(num)
-    return quicksort(smaller) + equal + quicksort(larger)     
+    return quicksort(smaller) + equal + quicksort(larger)
+
 
 l = [32, 1, 434, 29, 100, 99, 2, 3, 89898, 23]
 

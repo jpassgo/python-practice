@@ -1,21 +1,23 @@
-# https://leetcode.com/problems/rotate-array/ 
-# 
+# https://leetcode.com/problems/rotate-array/
+#
 # Given an array, rotate the array to the right by k steps, where k is non-negative.
-# 
+#
+
 
 def rotate(array, k):
-    size = len(array)    
-    
+    size = len(array)
+
     temp_array = [0] * size
-    
+
     for index in range(size):
         temp_array[calculcate_new_index(index, k, size)] = array[index]
 
     for index in range(size):
         array[index] = temp_array[index]
-    
+
     return array
-        
+
+
 def calculcate_new_index(index, k, size):
     new_index = index + k
     if new_index <= (size - 1):

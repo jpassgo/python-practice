@@ -1,16 +1,17 @@
-# 
+#
 # 617. Merge Two Binary Trees
-# 
+#
 # You are given two binary trees root1 and root2.
-# Imagine that when you put one of them to cover the other, some nodes of the two trees are overlapped while the others are not. 
-# You need to merge the two trees into a new binary tree. The merge rule is that if two nodes overlap, 
+# Imagine that when you put one of them to cover the other, some nodes of the two trees are overlapped while the others are not.
+# You need to merge the two trees into a new binary tree. The merge rule is that if two nodes overlap,
 #   then sum node values up as the new value of the merged node.
 # Otherwise, the NOT null node will be used as the node of the new tree.
 # Return the merged tree.
 # Note: The merging process must start from the root nodes of both trees.
 #
 # https://leetcode.com/problems/merge-two-binary-trees/
-# 
+#
+
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -19,17 +20,20 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 class Solution:
-    def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
+    def mergeTrees(
+        self, root1: Optional[TreeNode], root2: Optional[TreeNode]
+    ) -> Optional[TreeNode]:
         new_root = TreeNode()
 
-        
 
-    
-
-
-root1 = TreeNode(10, TreeNode(7, TreeNode(6), TreeNode(8)), TreeNode(13, TreeNode(11), TreeNode(15)))
-root2 = TreeNode(9, TreeNode(5, TreeNode(4), TreeNode(8)), TreeNode(14, TreeNode(11), TreeNode(15)))
+root1 = TreeNode(
+    10, TreeNode(7, TreeNode(6), TreeNode(8)), TreeNode(13, TreeNode(11), TreeNode(15))
+)
+root2 = TreeNode(
+    9, TreeNode(5, TreeNode(4), TreeNode(8)), TreeNode(14, TreeNode(11), TreeNode(15))
+)
 
 solution = Solution()
 

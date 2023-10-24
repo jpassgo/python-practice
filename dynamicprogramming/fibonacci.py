@@ -3,6 +3,7 @@
 # Starts with two 1's then sum the previous two numbers to calculate the
 # next number in the sequence.
 
+
 # Recursion
 def fibonacci(n):
     if n == 1 or n == 2:

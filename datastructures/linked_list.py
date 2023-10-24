@@ -1,5 +1,4 @@
 class Node:
-
     def __init__(self, data=None):
         self.data = data
         self.next = None
@@ -9,7 +8,6 @@ class Node:
 
 
 class LinkedList:
-
     def __init__(self, data=None):
         self.head = None
         self.tail = None
@@ -74,8 +72,19 @@ class LinkedList:
         pass
 
 
-node1, node2, node3, node4, node5, = Node(
-    1), Node(2), Node(3), Node(4), Node(5)
+(
+    node1,
+    node2,
+    node3,
+    node4,
+    node5,
+) = (
+    Node(1),
+    Node(2),
+    Node(3),
+    Node(4),
+    Node(5),
+)
 
 myList = LinkedList()
 
